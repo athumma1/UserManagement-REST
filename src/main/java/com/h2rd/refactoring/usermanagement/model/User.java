@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Email;
 
 public class User {
 
+	
 	@NotNull
     private String name;
 	@NotNull

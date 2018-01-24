@@ -1,17 +1,20 @@
 package com.h2rd.refactoring.usermanagement.controller;
 
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.h2rd.refactoring.usermanagement.Validator.UserValidator;
 import com.h2rd.refactoring.usermanagement.model.User;
 import com.h2rd.refactoring.usermanagement.service.UserManagementService;
+import com.h2rd.refactoring.usermanagement.validator.UserValidator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,15 +48,15 @@ public class UserManagementController {
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
 
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public ResponseEntity<User> updateUser(@RequestBody @Validated User user) {		
 		log.info("updating user: {}", user);
-		userManagementService.updateUser(user);
+		user = userManagementService.updateUser(user);
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
 
 
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
 	public ResponseEntity<User> deleteUser(@RequestBody @Validated User user) {		
 		userManagementService.deleteUser(user);
 		return new ResponseEntity<User>(user,HttpStatus.OK);
@@ -67,7 +70,7 @@ public class UserManagementController {
 			log.info("No Users Found");
 			return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<User>>(HttpStatus.OK);
+		return new ResponseEntity<List<User>>(users,HttpStatus.OK);
 	}
 
 
@@ -77,7 +80,7 @@ public class UserManagementController {
 		User user = userManagementService.findUser(name);
 		if(user == null){
 			log.info("User with name {} not found", name);
-			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}

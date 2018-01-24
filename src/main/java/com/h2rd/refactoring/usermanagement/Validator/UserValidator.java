@@ -1,4 +1,4 @@
-package com.h2rd.refactoring.usermanagement.Validator;
+package com.h2rd.refactoring.usermanagement.validator;
 
 import java.util.regex.Pattern;
 
