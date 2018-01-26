@@ -1,6 +1,5 @@
 package com.h2rd.refactoring.usermanagement.controller;
 
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +24,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserManagementControllerTest {
@@ -93,8 +91,8 @@ public class UserManagementControllerTest {
 		.andExpect(MockMvcResultMatchers.status().isOk());
 
 	}
-	
-/*	@Test
+
+	/*	@Test
 	public void getUser() throws Exception {
 		mockMvc.perform(
 				get("/users/user").param("email", user.getEmail())

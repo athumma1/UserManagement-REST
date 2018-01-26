@@ -21,68 +21,68 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserManagementServiceImplTest {
-    @Mock
-    private UserManagementDao userManagmentDao;
-    @InjectMocks
-    private UserManagementServiceImpl userManagementService;
+	@Mock
+	private UserManagementDao userManagmentDao;
+	@InjectMocks
+	private UserManagementServiceImpl userManagementService;
 
-    User user = new User();
-    User user1 = new User();
-    
-    List<User> users = new ArrayList();
-    
-    @Before
-    public void setUp(){
-        MockitoAnnotations.initMocks(this);
-       
-        user.setName("Test User");
-        user.setEmail("testuser@gmail.com");
-        
-        user1.setName("Test User1");
-        user1.setEmail("testuser11@gmail.com");
-        
-        users.add(user);
-    }
+	User user = new User();
+	User user1 = new User();
 
-    @Test
-    public void getUserByEmail() throws Exception {
-        
-        when(userManagmentDao.getUserByEmail("testuser@gmail.com")).thenReturn(user);
-        final User userByEmail = userManagementService.getUserByEmail("testuser@gmail.com");
-        assertEquals(user, userByEmail);
-        verify(userManagmentDao, times(1)).getUserByEmail("testuser@gmail.com");
-    }
+	List<User> users = new ArrayList();
 
-    @Test
-    public void saveUser() throws Exception {
-    	
-    	doNothing().when(userManagmentDao).saveUser(user);
-    	userManagementService.saveUser(user);
-    	verify(userManagmentDao, times(1)).saveUser(user);
-    	
-    }
+	@Before
+	public void setUp(){
+		MockitoAnnotations.initMocks(this);
 
-    @Test
-    public void getAllUsers() throws Exception {
-    	when(userManagmentDao.getAllUsers()).thenReturn(users);
-    	final List<User> allUsers = userManagementService.getAllUsers();
-    	assertEquals(users, allUsers);
-    	verify(userManagmentDao, times(1)).getAllUsers();
-    }
+		user.setName("Test User");
+		user.setEmail("testuser@gmail.com");
 
-    @Test
-    public void updateUser() throws Exception {
-    	doNothing().when(userManagmentDao).updateUser(user);
-    	userManagementService.updateUser(user);
-    	verify(userManagmentDao, times(1)).updateUser(user);
-    }
+		user1.setName("Test User1");
+		user1.setEmail("testuser11@gmail.com");
 
-    @Test
-    public void deleteUser() throws Exception {
-    	doNothing().when(userManagmentDao).deleteUser(user.getEmail());
-    	userManagementService.deleteUser(user.getEmail());
-    	verify(userManagmentDao, times(1)).deleteUser(user.getEmail());
-    	
-    }
+		users.add(user);
+	}
+
+	@Test
+	public void getUserByEmail() throws Exception {
+
+		when(userManagmentDao.getUserByEmail("testuser@gmail.com")).thenReturn(user);
+		final User userByEmail = userManagementService.getUserByEmail("testuser@gmail.com");
+		assertEquals(user, userByEmail);
+		verify(userManagmentDao, times(1)).getUserByEmail("testuser@gmail.com");
+	}
+
+	@Test
+	public void saveUser() throws Exception {
+
+		doNothing().when(userManagmentDao).saveUser(user);
+		userManagementService.saveUser(user);
+		verify(userManagmentDao, times(1)).saveUser(user);
+
+	}
+
+	@Test
+	public void getAllUsers() throws Exception {
+		when(userManagmentDao.getAllUsers()).thenReturn(users);
+		final List<User> allUsers = userManagementService.getAllUsers();
+		assertEquals(users, allUsers);
+		verify(userManagmentDao, times(1)).getAllUsers();
+	}
+
+	@Test
+	public void updateUser() throws Exception {
+		doNothing().when(userManagmentDao).updateUser(user);
+		userManagementService.updateUser(user);
+		verify(userManagmentDao, times(1)).updateUser(user);
+	}
+
+	@Test
+	public void deleteUser() throws Exception {
+		doNothing().when(userManagmentDao).deleteUser(user.getEmail());
+		userManagementService.deleteUser(user.getEmail());
+		verify(userManagmentDao, times(1)).deleteUser(user.getEmail());
+
+	}
 
 }

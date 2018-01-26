@@ -1,0 +1,19 @@
+
+- Spring Boot Application
+	 This application is developed on Spring Boot in order to avoid boiler plate xml configurations and also it has inbuilt Tomcat Server. 
+- Spring REST
+	Developed using Spring REST by taking advantage of Spring features
+- Spring DI @Autowire
+    Spring Dependency Injection can reduce the over head of creating the objects. IoC container will create the objects.
+- UI Changes
+     We can consume RESTful webservice using Jquery or AngularJS. As I didn't have sufficient time building it, this would be one of the opportunity where I can enhance the UI if time permits
+- Project structure
+     Changed the project structure to use different packages. Code Readability is handled
+- Interfaces and Implementation
+     Instead of directly exposing the implementation classes, interfaces are used
+- Unit and Integration testing
+     Unit and Integration testing is done for individual classes
+- JUnit and Mockito Frameworks
+    Junit and Mockito Frameworks are used to improve the testing by mocking objects 
+- User Validations are handled using Annotations such as @NotNull @Email
+- OOPS features are implemented
