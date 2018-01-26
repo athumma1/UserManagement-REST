@@ -1,4 +1,4 @@
-package com.example.springrest;
+package com.h2rd.refactoring.usermanagement;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserApplicationTests {
+public class UsermanagementApplicationTests {
 
 	@Test
 	public void contextLoads() {

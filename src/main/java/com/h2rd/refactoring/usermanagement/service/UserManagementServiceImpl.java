@@ -1,50 +1,41 @@
 package com.h2rd.refactoring.usermanagement.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.h2rd.refactoring.usermanagement.model.User;
-import com.h2rd.refactoring.usermanagement.repository.UserDao;
+import com.h2rd.refactoring.usermanagement.repository.UserManagementDao;
+
+import java.util.List;
 
 @Service
-@Component
 public class UserManagementServiceImpl implements UserManagementService{
+    @Autowired
+    private UserManagementDao userManagmentDao;
 
-	@Autowired
-	private UserDao userDao;
+    @Override
+    public User getUserByEmail(final String email) {
+        return userManagmentDao.getUserByEmail(email);
+    }
 
-	@Override
-	public User addUser(User user) {
-		return userDao.saveUser(user);
+    @Override
+    public void saveUser(final User user) {
+        userManagmentDao.saveUser(user);
+    }
 
-	}
+    @Override
+    public List<User> getAllUsers() {
+        return userManagmentDao.getAllUsers();
+    }
 
-	@Override
-	public List<User> getUsers() {
-		return userDao.getUsers();
+    @Override
+    public void updateUser(final User user) {
+        userManagmentDao.updateUser(user);
+    }
 
-	}
-
-	@Override
-	public void deleteUser(User userToDelete) {		
-		userDao.deleteUser(userToDelete);
-		return ;
-	}
-
-	@Override
-	public User updateUser(User userToUpdate) {		
-		return userDao.updateUser(userToUpdate);
-	}
-
-	@Override
-	public User findUser(String name) {
-		return userDao.findUser(name);
-
-	}
-
-
-
+    @Override
+    public void deleteUser(final String email) {
+        userManagmentDao.deleteUser(email);
+    }
 }
